@@ -1,0 +1,12 @@
+/* ---------- GLOBAL LAYOUT ---------- */
+body {
+  background-color: #d6dce1; /* soft gray-blue background */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: Garamond, serif;
+  color: #313647;
+}
