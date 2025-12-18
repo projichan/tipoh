@@ -1,0 +1,20 @@
+ .jump-nav {
+  position: static; /* removes the stickiness */
+  top: auto;
+  z-index: 900;
+  background: rgba(214,220,225,0.92);
+  backdrop-filter: blur(2px);
+  border: 1px solid #c8ced6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 0 auto 22px;
+  max-width: 1000px;
+}
+    .jump-list { display:flex; flex-wrap:wrap; gap:8px 14px; margin:0; padding:0; list-style:none; }
+    .jump-list a {
+      display:inline-block; text-decoration:none; padding:8px 10px; border-radius:8px;
+      border:1px solid #b9c0c9; background:#fff; color:#2c7a7b; font-family:Garamond, serif;
+    }
+    .jump-list a:hover { text-decoration:underline; }
+    .service-meta { margin: 8px 0 0 18px; }
+    .service-meta li { margin: 4px 0; }
