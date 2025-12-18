@@ -1,0 +1,16 @@
+/* Banner containers */
+.belief-banner {
+  background: linear-gradient(90deg, #d6dce1, #2c7a7b, #d6dce1);
+  color: #ffffff;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  text-align: center;
+  padding: 1.25rem 2rem;
+  border-radius: 8px; /* rectangular ends */
+  margin: 1.5rem auto;
+  width: fit-content;
+  max-width: 90%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1.4;
+}
