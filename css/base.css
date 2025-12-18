@@ -1,0 +1,57 @@
+/* ===============================
+            Base CSS
+   =============================== */
+
+/* ---- Design tokens ---- */
+:root{
+  --bg:    #d6dce1;
+  --ink:   #313647;
+  --brand: #2c7a7b;
+  --white: #fff;
+  --radius: 12px;
+}
+
+/* ---- Resets ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+
+/* ---- Page frame (footer sticks to bottom on short pages) ---- */
+body{
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Garamond, serif;
+  line-height: 1.5;
+}
+
+/* Let main take remaining height so footer moves to bottom */
+main { flex: 1; }
+
+/* ---- Typographic/link defaults ---- */
+a{
+  color: inherit;                 /* components override as needed */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover{ text-decoration-thickness: 2px; }
+
+img{ max-width: 100%; height: auto; display: block; }
+
+:focus-visible{
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* ---- Layout helper ---- */
+.container{
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 28px 16px;
+}
+
+/* NOTE:
+   Footer styles live in rebuild/css/footer.css as footer.css
+   Do not style <footer> here to avoid conflicts.
+*/
