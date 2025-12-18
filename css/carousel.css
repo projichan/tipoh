@@ -1,0 +1,173 @@
+/* ============================================================
+   Base carousel wrapper
+   ============================================================ */
+
+.carousel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;  /* heading / track / dots */
+  gap: var(--gap-md);
+  margin: 32px auto 16px;
+  max-width: var(--max-wrap);
+}
+
+.carousel h2 {
+  text-align: center;
+  font-family: var(--font-serif);
+  color: var(--ink-900);
+  font-size: 28px;
+  margin: 0;
+}
+
+/* ============================================================
+   Track (horizontal scroller) — NO JS REQUIRED
+   ============================================================ */
+
+.carousel-track {
+  /* layout */
+  display: grid;
+  grid-auto-flow: column;     /* lay out children side-by-side */
+  grid-auto-columns: 80%;     /* base slide width on small screens */
+  gap: var(--gap-lg);
+
+  /* scrolling behavior */
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* spacing */
+  padding: 6px 8px 18px;
+
+  /* optional: hide scrollbar (still accessible to scroll) */
+  scrollbar-width: none;               /* Firefox */
+}
+.carousel-track::-webkit-scrollbar {   /* WebKit */
+  display: none;
+}
+
+/* responsive slide widths */
+@media (min-width: 768px)  { .carousel-track { grid-auto-columns: 48%; } }
+@media (min-width: 1024px) { .carousel-track { grid-auto-columns: 32%; } }
+
+/* Each slide should snap to a pleasing position */
+.carousel-slide {
+  scroll-snap-align: center;   /* center feels best for cards */
+  scroll-margin-inline: 16px;  /* hash-jumps land with padding */
+}
+
+/* ============================================================
+   Slide card styling (harmonizes with your existing .card)
+   ============================================================ */
+
+.carousel .card {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  margin: 0; /* ensure tight snap alignment */
+  transition: transform .18s ease, box-shadow .18s ease;
+  text-align: center;
+}
+
+.carousel .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+/* reuse your thumbnail container */
+.carousel .thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e9edf0;
+}
+
+.carousel .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* headings / links inside cards */
+.carousel .card h3 {
+  margin: 12px 0 6px;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink-900);
+}
+
+.carousel .card a {
+  display: inline-block;
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: var(--brand-teal);
+  text-decoration: underline;
+}
+
+/* --- Replace dots with simple arrows --- */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 12px 0;
+}
+
+.carousel-dots a {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
+}
+
+/* Add arrows using pseudo-elements */
+.carousel-dots a:first-child::before {
+  content: "◀";
+}
+.carousel-dots a:last-child::before {
+  content: "▶";
+}
+
+/* Hover and focus styles */
+.carousel-dots a:hover {
+  background: var(--brand-teal-dark);
+  transform: scale(1.1);
+}
+.carousel-dots a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   Reduced motion preference
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+  .carousel .card { transition: none; }
+}
+
+/* ============================================================
+   Print (hide carousel chrome, show slides stacked)
+   ============================================================ */
+
+@media print {
+  .carousel { gap: 0; }
+  .carousel-track {
+    overflow: visible;
+    display: block;
+    scroll-snap-type: none;
+  }
+  .carousel-slide { break-inside: avoid; margin-bottom: 16px; }
+  .carousel-dots, .carousel-arrows { display: none !important; }
+}
