@@ -1,0 +1,239 @@
+/* ===============================
+   Pedagogy of Humanity — Nav Bar
+   =============================== */
+
+/* Ensure header + nav always span full width */
+header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.site-nav {
+  width: 100%; /* bulletproof full-width */
+}
+
+/* Main nav container (desktop defaults) */
+.site-nav {
+  background: #2c7a7b;               /* brand teal */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px 0;
+  margin: 0;
+}
+
+/* Links */
+.site-nav a {
+  color: #d6dce1;                    /* unify link color */
+  text-decoration: none;
+  font-size: 18px;
+  font-family: Garamond, serif;
+  line-height: 1.2;
+  transition: color .3s ease, background-color .3s ease;
+}
+
+/* Interactive states */
+.site-nav a:hover { color: #d6dce1; background: rgba(255,255,255,.08); }
+.site-nav a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+.site-nav a[aria-current="page"] {
+  color: #d6dce1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Layout for items (icon + label on one line) */
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;      /* nice tap target */
+  border-radius: 8px;
+}
+
+/* ICONS: clamp sizes for <img> or inline <svg> */
+.site-nav img,
+.site-nav .icon,
+.site-nav svg {
+  width: 22px;
+  height: 22px;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  flex: 0 0 22px;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+}
+.site-nav svg[width]  { width: 22px !important; }
+.site-nav svg[height] { height: 22px !important; }
+/* If your icons need to inherit color */
+.site-nav svg { fill: #d6dce1 !important; stroke: #d6dce1 !important; }
+
+/* <details>/<summary> (dropdown parents) */
+.site-nav summary.nav-item {
+  color: #d6dce1;
+  font-size: 18px;
+  font-family: Garamond, serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none; /* remove default marker in some browsers */
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.site-nav summary.nav-item:hover,
+.site-nav details[open] > summary.nav-item {
+  background: rgba(255,255,255,.08);
+  color: #d6dce1;
+}
+/* Hide native disclosure markers */
+.site-nav summary.nav-item::-webkit-details-marker { display: none; }
+.site-nav summary.nav-item::marker { content: ""; }
+
+/* Submenus (desktop pop-in feel but inline container) */
+.site-nav .submenu {
+  position: static;
+  display: none;            /* hidden until parent opens */
+  margin: 6px 0 0 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.site-nav .nav-group[open] > .submenu { display: block; }
+.site-nav .submenu a {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  .site-nav summary.nav-item,
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    transition: none;
+  }
+}
+
+/* -------------------------------
+   MOBILE HAMBURGER NAV (CSS-only)
+   ------------------------------- */
+@media (max-width: 700px) {
+  /* Sticky toggle bar */
+  .hamburger {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    background: #2c7a7b;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+  }
+  .hamburger-btn {
+    list-style: none;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    color: #d6dce1;
+    font-family: Garamond, serif;
+    font-size: 18px;
+  }
+  .hamburger-btn::-webkit-details-marker { display: none; }
+  .hamburger-btn::marker { content: ""; }
+
+  /* Hamburger icon (3 bars → X when open) */
+  .hamburger-box { position: relative; width: 24px; height: 16px; }
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    content: "";
+    position: absolute; left: 0;
+    width: 24px; height: 2px; border-radius: 2px;
+    background: #d6dce1;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .hamburger-inner { top: 7px; }
+  .hamburger-inner::before { top: -6px; }
+  .hamburger-inner::after  { top: 6px; }
+  .hamburger[open] .hamburger-inner { transform: rotate(45deg); }
+  .hamburger[open] .hamburger-inner::before { opacity: 0; }
+  .hamburger[open] .hamburger-inner::after  { transform: rotate(-90deg); top: 0; }
+
+  /* Hide desktop nav on mobile until opened */
+  .site-nav { display: none !important; }
+
+  /* Show nav when the hamburger <details> is open */
+  /* Use general sibling (~) so it works even if something sits between them */
+  .hamburger[open] ~ .site-nav {
+    display: flex !important;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 8px;
+    background: #2c7a7b;       /* match bar */
+    border-top: 1px solid rgba(255,255,255,.15);
+
+    /* override desktop sticky so it flows under the toggle */
+    position: static;
+    top: auto;
+  }
+
+  /* Make each top-level item a comfy full-width row */
+  .site-nav > .nav-item,
+  .site-nav > .nav-group > summary.nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.08);
+    font-size: 18px; line-height: 1.3;
+  }
+
+  /* Submenus: indent + block items */
+  .site-nav .submenu {
+    position: static;
+    display: none;
+    margin: 6px 0 2px 38px;     /* indent under its parent */
+    padding: 6px 8px;
+    background: transparent; border: 0;
+  }
+  .site-nav .nav-group[open] > .submenu { display: block; }
+  .site-nav .submenu a {
+    display: block; padding: 10px 8px; border-radius: 8px;
+  }
+  .site-nav .submenu a:hover { background: rgba(255,255,255,.08); }
+
+  /* Add a caret to summaries (rotates when open) */
+  .site-nav summary.nav-item::after {
+    content: "▸"; margin-left: auto; transform: rotate(0deg);
+    transition: transform .18s ease; color: currentColor;
+  }
+  .site-nav .nav-group[open] > summary.nav-item::after { transform: rotate(90deg); }
+
+  /* Prevent sideways scroll on tiny screens */
+  .site-nav { overflow-x: hidden; }
+}
+
+/* Desktop: hide hamburger, show normal nav */
+@media (min-width: 701px) {
+  .hamburger { display: none; }
+  .site-nav { display: flex; }
+}
+
+/* Focus-visible for accessibility */
+.hamburger-btn:focus-visible,
+.site-nav a:focus-visible,
+.site-nav summary.nav-item:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Helper: avoid sticky nav covering in-page anchors elsewhere */
+.section[id] { scroll-margin-top: 90px; }
