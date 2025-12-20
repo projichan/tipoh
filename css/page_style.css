@@ -1,3 +1,8 @@
+/* ===============================
+   Pedagogy of Humanity — Page Style
+   Shared layout for all content pages
+   =============================== */
+
 /* ---------- GLOBAL LAYOUT ---------- */
 body {
   background-color: #d6dce1; /* soft gray-blue background */
@@ -9,4 +14,315 @@ body {
   align-items: stretch;
   font-family: Garamond, serif;
   color: #313647;
+}
+
+/* ---------- MAIN WRAPPER ---------- */
+.wrap {
+  width: auto;                 /* prevent full stretch */
+  max-width: 1000px;
+  margin: 20px auto 40px;      /* centers horizontally */
+  padding: 20px 16px;
+  align-self: center;          /* counteracts body flex stretch */
+  box-sizing: border-box;
+}
+
+/* ---------- HERO / INTRO BLOCK ---------- */
+.content-wrapper {
+  max-width: 800px;
+  margin: 10px auto 28px;      /* fixed missing px */
+  background-color: rgba(44, 122, 123, 0.3); /* translucent teal tint */
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+.content-wrapper h1 {
+  font-size: 34px;
+  margin: 0 0 20px;
+  font-family: Garamond, serif;
+}
+.content-wrapper p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 16px 0;
+}
+.content-wrapper ul {
+  text-align: left;
+  list-style-position: inside;  /* optional: moves bullets inside the box */
+  margin: 0 auto;
+  padding-left: 1.5rem;         /* tweak spacing if needed */
+}
+
+
+/* ---------- SECTION & CARDS ---------- */
+.section {
+  margin: 28px auto;
+  max-width: 1000px;
+  padding: 0 16px;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-family: Garamond, serif;
+}
+
+/* ---------- POST CARDS ---------- */
+.post-card {
+  border: 1px solid #d6dce1;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+  background: #fff;
+  text-align: left;
+}
+.post-card h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+.post-card a {
+  text-decoration: none;
+  color: #2c7a7b;
+}
+.post-card a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- VIDEO EMBED ---------- */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- BREADCRUMBS ---------- */
+.breadcrumb {
+  margin: 8px 0 12px;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #2c7a7b;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  width: 100%;
+  text-align: center;
+  color: #313647;
+  font-style: italic;
+  font-size: 18px;
+  padding-bottom: 96px;
+  margin-top: auto;
+}
+
+/* ---------- RESPONSIVE TYPOGRAPHY ---------- */
+@media (max-width: 640px) {
+  .wrap {
+    margin-top: 80px;
+    padding: 24px 14px;
+  }
+  .content-wrapper {
+    padding: 28px 18px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .content-wrapper h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .card h2 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .content-wrapper p,
+  .card p,
+  li {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+}
+
+/* ---------- PILLAR CARDS (Get Started) ---------- */
+.pillars {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.pillar-card {
+  background: #f8f5f2;             /* ivory cream */
+  border-radius: 12px;
+  border: 1px solid #a5adbf;       /* dark dove grey border */
+  box-shadow: 0 6px 16px rgba(49,54,71,.15); /* soft charcoal shadow */
+  padding: 24px;
+  flex: 1 1 300px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(49,54,71,.25);
+}
+
+.pillar-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-family: Garamond, serif;
+  color: #4f797a;                  /* base teal */
+}
+
+.pillar-card p {
+  margin: 0 0 16px;
+  line-height: 1.55;
+  color: #313647;                  /* charcoal text */
+}
+
+.pillar-card .cta {
+  margin-top: auto;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-primary {
+  display: inline-block;
+  background: #4f797a;             /* base teal */
+  color: #f8f5f2;                  /* ivory text */
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background .2s ease, transform .15s ease;
+}
+.btn-primary:hover {
+  background: #89d0c4;             /* light teal hover */
+  color: #313647;                  /* readable on lighter tone */
+  transform: translateY(-2px);
+}
+
+/* ---------- SECTION TITLES ---------- */
+.section h2.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #2c7a7b;                  /* header banner teal */
+  margin: 0 0 14px;
+}
+.section .section-subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #cca752;                  /* decorative scrollwork gold */
+  margin: 0 0 22px;
+}
+
+/* ---------- MOBILE PILLAR FIX ---------- */
+@media (max-width: 640px) {
+  .pillar-card { max-width: 100%; }
+}
+
+/* ---------- THREE-PILLAR GRID (Get Started section) ---------- */
+.cards-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card-container .card {
+  margin: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  padding: 24px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-container .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* ---------- RESPONSIVE GRID ---------- */
+@media (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- BULLET CARD ALIGNMENT ---------- */
+@media (max-width: 640px) {
+  .card ul { 
+    list-style: disc outside; 
+    padding-left: 1.25rem; 
+    margin: 0; 
+  }
+  .card li, 
+  .card p { 
+    text-align: left; 
+    line-height: 1.6; 
+    margin: 0.5rem 0; 
+  }
+  .card h2 { 
+    text-align: center; 
+    margin-bottom: 0.75rem; 
+  }
+}
+
+/* ===============================
+   Growing Brain Certified Badge
+   =============================== */
+/* Center the badge block itself */
+.badge-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* Style the image nicely */
+.badge-image {
+  max-width: 200px;
+  height: auto;
+  display: inline-block; /* inline-block allows text-align: center to work */
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* Gentle hover animation */
+.badge-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
 }
