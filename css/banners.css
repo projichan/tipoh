@@ -16,6 +16,10 @@
 }
 
 .affiliation-card {
+  color: #f8f5f2; 
+  font-family: 'EB Garamond', serif;
+  font-style: italic; 
+  text-align: center;
   max-width: 520px;   
   width: 50%;
   margin: 3rem auto;
