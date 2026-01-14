@@ -14,3 +14,9 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   line-height: 1.4;
 }
+
+.affiliation-card {
+  max-width: 520px;   
+  width: 100%;
+  margin: 3rem auto;
+}
