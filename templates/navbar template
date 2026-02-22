@@ -33,5 +33,11 @@
         <img src="assets/icons/contact.svg" alt="" aria-hidden="true" class="icon">
         <span>Contact TIPOH</span>
       </a>
+
+      <!--Donate -->
+      <a href="donate.html" class="nav-item" aria-current="page">
+        <img src="assets/icons/donate.svg" alt="" aria-hidden "true" class="icon">
+          <span>Donate</span>
+        </a>
  </nav>
   </header>
