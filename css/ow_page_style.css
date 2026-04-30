@@ -1,0 +1,43 @@
+/* Our Work page — ecosystem levels */
+.ow-level {
+  margin-bottom: 2rem;
+}
+
+.ow-level-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.ow-level-header h2 {
+  margin: 0;
+}
+
+.ow-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.ow-divider {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 2rem 0;
+}
+
+.ow-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.ow-badge--home     { background: #EEEDFE; color: #3C3489; }
+.ow-badge--school   { background: #E1F5EE; color: #085041; }
+.ow-badge--community { background: #FAEEDA; color: #633806; }
+.ow-badge--field    { background: #E6F1FB; color: #0C447C; }
